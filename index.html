@@ -1,816 +1,484 @@
-!DOCTYPE html
-html lang=id
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    titleKABOBS Operational Management - Area Bandung 2title
-    !-- Tailwind CSS CDN --
-    script src=httpscdn.tailwindcss.comscript
-    !-- Google Fonts Poppins --
-    link href=httpsfonts.googleapis.comcss2family=Poppinswght@300;400;500;600;700;800&display=swap rel=stylesheet
-    !-- FontAwesome Icons --
-    link rel=stylesheet href=httpscdnjs.cloudflare.comajaxlibsfont-awesome6.4.0cssall.min.css
-    script
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KABOBS Operational Management - Area Bandung 2</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
         tailwind.config = {
-            theme {
-                extend {
-                    fontFamily {
-                        sans ['Poppins', 'sans-serif'],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
                     },
-                    colors {
-                        kabobs {
-                            gold '#E6A100',
-                            darkgold '#B88100',
-                            amber '#D97706',
-                            red '#DC2626',
-                            darkred '#991B1B',
-                            light '#FFFBEB',
-                            bg '#FDFBF7',
-                            dark '#111827'
+                    colors: {
+                        kabobs: {
+                            gold: '#E6A100',
+                            darkgold: '#B88100',
+                            amber: '#D97706',
+                            red: '#DC2626',
+                            darkred: '#991B1B',
+                            light: '#FFFBEB',
+                            bg: '#FDFBF7',
+                            dark: '#111827'
                         }
                     }
                 }
             }
         }
-    script
-    style
-        body { font-family 'Poppins', sans-serif; background-color #F8FAFC; color #1E293B; }
-        .custom-scrollbar-webkit-scrollbar { width 6px; height 6px; }
-        .custom-scrollbar-webkit-scrollbar-track { background #f1f1f1; border-radius 8px; }
-        .custom-scrollbar-webkit-scrollbar-thumb { background #cbd5e1; border-radius 8px; }
-        .custom-scrollbar-webkit-scrollbar-thumbhover { background #94a3b8; }
-        .calendar-grid-cell { min-height 85px; }
-    style
-head
-body class=bg-slate-50 min-h-screen text-slate-800
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #1E293B; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .calendar-grid-cell { min-height: 85px; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
 
-    !-- CONFIGURATION & API CONNECTIVITY WARNING BAR --
-    div id=api-status-bar class=bg-gradient-to-r from-red-700 via-amber-600 to-amber-700 text-white text-xs font-medium py-1.5 px-4 shadow-sm flex justify-between items-center
-        div class=max-w-7xl mx-auto flex items-center justify-between w-full
-            span class=flex items-center gap-2
-                span class=bg-white20 text-white px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widerSystem Live Syncspan
+    <!-- CONFIGURATION & API CONNECTIVITY WARNING BAR -->
+    <div id="api-status-bar" class="bg-gradient-to-r from-red-700 via-amber-600 to-amber-700 text-white text-xs font-medium py-1.5 px-4 shadow-sm flex justify-between items-center">
+        <div class="max-w-7xl mx-auto flex items-center justify-between w-full">
+            <span class="flex items-center gap-2">
+                <span class="bg-white/20 text-white px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">System Live Sync</span>
                 KABOBS Operational Hub - Area Bandung 2 (8 Outlets Sync)
-            span
-            span class=hidden mdinline-flex items-center gap-3 text-[11px] opacity-90
-                i class=fa-regular fa-calendar-daysi Periode Cutoff Active strong class=text-amber-20026 Okt - 25 Nov 2026strong
-            span
-        div
-    div
+            </span>
+            <span class="hidden md:inline-flex items-center gap-3 text-[11px] opacity-90">
+                <i class="fa-regular fa-calendar-days"></i> Periode Cutoff Active: <strong class="text-amber-200">26 Okt - 25 Nov 2026</strong>
+            </span>
+        </div>
+    </div>
 
-    !-- MAIN HEADER NAVBAR --
-    header class=bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm
-        div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8
-            div class=flex justify-between items-center h-20
+    <!-- MAIN HEADER NAVBAR -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
                 
-                !-- BRANDING WITH OFFICIAL KABOBS LOGO --
-                div class=flex items-center gap-3
-                    div class=flex items-center bg-white border border-slate-200 p-2 rounded-2xl shadow-sm gap-2.5
-                        div class=w-10 h-10 bg-amber-500 rounded-xl flex flex-col items-center justify-center p-1 shadow-sm
-                            i class=fa-solid fa-hotdog text-white text-lgi
-                        div
-                        div
-                            div class=flex items-center gap-1
-                                span class=font-extrabold text-xl tracking-tight text-red-600KABOBSspan
-                                span class=text-[9px] bg-slate-900 text-amber-400 font-bold px-1.5 py-0.2 roundedPREMIUMspan
-                            div
-                            p class=text-[10px] font-extrabold text-slate-700 tracking-widest uppercaseAREA BANDUNG 2p
-                        div
-                    div
-                div
+                <!-- BRANDING WITH OFFICIAL KABOBS LOGO -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center bg-white border border-slate-200 p-2 rounded-2xl shadow-sm gap-2.5">
+                        <div class="w-10 h-10 bg-amber-500 rounded-xl flex flex-col items-center justify-center p-1 shadow-sm">
+                            <i class="fa-solid fa-hotdog text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1">
+                                <span class="font-extrabold text-xl tracking-tight text-red-600">KABOBS</span>
+                                <span class="text-[9px] bg-slate-900 text-amber-400 font-bold px-1.5 py-0.2 rounded">PREMIUM</span>
+                            </div>
+                            <p class="text-[10px] font-extrabold text-slate-700 tracking-widest uppercase">AREA BANDUNG 2</p>
+                        </div>
+                    </div>
+                </div>
 
-                !-- GLOBAL CONTROLS & ROLE SWITCHER --
-                div class=flex items-center gap-3
+                <!-- GLOBAL CONTROLS & ROLE SWITCHER -->
+                <div class="flex items-center gap-3">
                     
-                    !-- Month & Year Selector --
-                    div class=hidden smflex items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs
-                        i class=fa-regular fa-calendar-check text-amber-600 ml-1.5i
-                        select id=filter-month onchange=updateDashboardData() class=bg-transparent font-semibold text-slate-700 outline-none cursor-pointer
-                            option value=11 selectedNovemberoption
-                            option value=10Oktoberoption
-                            option value=09Septemberoption
-                        select
-                        select id=filter-year onchange=updateDashboardData() class=bg-transparent font-semibold text-slate-700 outline-none cursor-pointer border-l border-slate-300 pl-1
-                            option value=2026 selected2026option
-                            option value=20252025option
-                            option value=20272027option
-                        select
-                    div
+                    <!-- Month & Year Selector -->
+                    <div class="hidden sm:flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs">
+                        <i class="fa-regular fa-calendar-check text-amber-600 ml-1.5"></i>
+                        <select id="filter-month" onchange="updateDashboardData()" class="bg-transparent font-semibold text-slate-700 outline-none cursor-pointer">
+                            <option value="11" selected>November</option>
+                            <option value="10">Oktober</option>
+                            <option value="09">September</option>
+                        </select>
+                        <select id="filter-year" onchange="updateDashboardData()" class="bg-transparent font-semibold text-slate-700 outline-none cursor-pointer border-l border-slate-300 pl-1">
+                            <option value="2026" selected>2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2027">2027</option>
+                        </select>
+                    </div>
 
-                    !-- Role Switcher Toggle --
-                    div class=flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200
-                        button id=role-btn-leader onclick=switchRole('leader') class=px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 bg-amber-500 text-slate-950 shadow-sm flex items-center gap-1.5
-                            i class=fa-solid fa-storei Leader Outlet
-                        button
-                        button id=role-btn-am onclick=switchRole('am') class=px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hovertext-slate-900 transition-all duration-200 flex items-center gap-1.5
-                            i class=fa-solid fa-user-shield text-red-600i Area Manager (AM)
-                        button
-                    div
+                    <!-- Role Switcher Toggle -->
+                    <div class="flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200">
+                        <button id="role-btn-leader" onclick="switchRole('leader')" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 bg-amber-500 text-slate-950 shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-store"></i> Leader Outlet
+                        </button>
+                        <button id="role-btn-am" onclick="switchRole('am')" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all duration-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-shield text-red-600"></i> Area Manager (AM)
+                        </button>
+                    </div>
 
-                    !-- User Avatar --
-                    div class=hidden lgflex items-center gap-2 pl-2 border-l border-slate-200
-                        div class=w-9 h-9 rounded-xl bg-slate-900 text-amber-400 font-bold text-xs flex items-center justify-center border border-slate-300 shadow-sm id=user-avatar
+                    <!-- User Avatar -->
+                    <div class="hidden lg:flex items-center gap-2 pl-2 border-l border-slate-200">
+                        <div class="w-9 h-9 rounded-xl bg-slate-900 text-amber-400 font-bold text-xs flex items-center justify-center border border-slate-300 shadow-sm" id="user-avatar">
                             SL
-                        div
-                        div class=text-left
-                            p class=text-xs font-bold text-slate-800 leading-none id=user-nameLeader Ciwalkp
-                            p class=text-[10px] font-medium text-amber-600 mt-0.5 id=user-role-labelStore Leader Outletp
-                        div
-                    div
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-slate-800 leading-none" id="user-name">Leader Ciwalk</p>
+                            <p class="text-[10px] font-medium text-amber-600 mt-0.5" id="user-role-label">Store Leader Outlet</p>
+                        </div>
+                    </div>
 
-                div
-            div
-        div
+                </div>
+            </div>
+        </div>
 
-        !-- NAVIGATION BAR --
-        div class=bg-slate-900 text-white px-4 smpx-8 overflow-x-auto custom-scrollbar
-            div class=max-w-7xl mx-auto flex space-x-1 smspace-x-2 text-xs font-medium py-1
-                button onclick=switchTab('dashboard') id=nav-dashboard class=px-3.5 py-2.5 rounded-lg bg-amber-500 text-slate-950 font-bold flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-chart-piei Dashboard Utama
-                button
-                button onclick=switchTab('inventory') id=nav-inventory class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-boxes-stackedi Inventory & DSO
-                button
-                button onclick=switchTab('sales') id=nav-sales class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-receipti Sales Report
-                button
-                button onclick=switchTab('piq') id=nav-piq class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-awardi PIQ Performance
-                button
-                button onclick=switchTab('maintenance') id=nav-maintenance class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-screwdriver-wrenchi Pengajuan Perbaikan
-                button
-                button onclick=switchTab('visit') id=nav-visit class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-clipboard-checki Rekap Visit AM
-                button
-                button onclick=switchTab('schedule') id=nav-schedule class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-calendar-daysi Schedule Tim
-                button
-                button onclick=switchTab('team') id=nav-team class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-usersi Data Team
-                button
-                button onclick=switchTab('ba') id=nav-ba class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-file-signaturei Template BA
-                button
-                button onclick=switchTab('profile') id=nav-profile class=px-3.5 py-2.5 rounded-lg text-slate-300 hovertext-white hoverbg-slate-800 flex items-center gap-2 whitespace-nowrap
-                    i class=fa-solid fa-storei Profile Outlet
-                button
-            div
-        div
-    header
+        <!-- NAVIGATION BAR -->
+        <div class="bg-slate-900 text-white px-4 sm:px-8 overflow-x-auto custom-scrollbar">
+            <div class="max-w-7xl mx-auto flex space-x-1 sm:space-x-2 text-xs font-medium py-1">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-3.5 py-2.5 rounded-lg bg-amber-500 text-slate-950 font-bold flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard Utama
+                </button>
+                <button onclick="switchTab('inventory')" id="nav-inventory" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-boxes-stacked"></i> Inventory & DSO
+                </button>
+                <button onclick="switchTab('sales')" id="nav-sales" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-receipt"></i> Sales Report
+                </button>
+                <button onclick="switchTab('piq')" id="nav-piq" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-award"></i> PIQ Performance
+                </button>
+                <button onclick="switchTab('maintenance')" id="nav-maintenance" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Pengajuan Perbaikan
+                </button>
+                <button onclick="switchTab('visit')" id="nav-visit" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-clipboard-check"></i> Rekap Visit AM
+                </button>
+                <button onclick="switchTab('schedule')" id="nav-schedule" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-calendar-days"></i> Schedule Tim
+                </button>
+                <button onclick="switchTab('team')" id="nav-team" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-users"></i> Data Team
+                </button>
+                <button onclick="switchTab('ba')" id="nav-ba" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-file-signature"></i> Template BA
+                </button>
+                <button onclick="switchTab('profile')" id="nav-profile" class="px-3.5 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-store"></i> Profile Outlet
+                </button>
+            </div>
+        </div>
+    </header>
 
-    !-- MAIN CONTAINER --
-    main class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8 py-6 space-y-6
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-        !-- AM CONTROL BAR (AM Mode Only) --
-        div id=am-outlet-selector-bar class=hidden bg-slate-900 text-white p-4 rounded-2xl shadow-md flex flex-wrap items-center justify-between gap-4
-            div class=flex items-center gap-3
-                span class=bg-red-600 text-white px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-widerAM Control Activespan
-                p class=text-xs text-slate-300 font-mediumPilih Outletp
-                select id=am-outlet-filter onchange=onOutletChange(this.value) class=bg-slate-800 border border-slate-700 text-amber-400 text-xs font-bold rounded-xl px-3 py-1.5 outline-none
-                    option value=Ciwalk selectedCiwalk (Cihampelas Walk)option
-                    option value=AntapaniGriya Antapanioption
-                    option value=BECBEC (Bandung Electronic Center)option
-                    option value=CikutraCikutraoption
-                    option value=DagoDago Plazaoption
-                    option value=Buah BatuBuah Batuoption
-                    option value=Metro IndahMetro Indah Malloption
-                    option value=KingsKings Shopping Centreoption
-                select
-            div
-            div class=flex items-center gap-2
-                button onclick=openModal('modal-am-dso') class=px-3 py-1.5 bg-amber-500 text-slate-950 hoverbg-amber-600 text-xs font-bold rounded-xl transition shadow
+        <!-- AM CONTROL BAR (AM Mode Only) -->
+        <div id="am-outlet-selector-bar" class="hidden bg-slate-900 text-white p-4 rounded-2xl shadow-md flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="bg-red-600 text-white px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">AM Control Active</span>
+                <p class="text-xs text-slate-300 font-medium">Pilih Outlet:</p>
+                <select id="am-outlet-filter" onchange="onOutletChange(this.value)" class="bg-slate-800 border border-slate-700 text-amber-400 text-xs font-bold rounded-xl px-3 py-1.5 outline-none">
+                    <option value="Ciwalk" selected>Ciwalk (Cihampelas Walk)</option>
+                    <option value="Griya Antapani">Griya Antapani</option>
+                    <option value="BEC">BEC Atas</option>
+                    <option value="Cikutra">Cikutra</option>
+                    <option value="BIP">BIP Atas</option>
+                    <option value="Dipatiukur">Dipatiukur</option>
+                    <option value="Yogya Sunda">Yogya Sunda</option>
+                    <option value="Yogya Kepatihan">Yogya Kepatihan</option>
+                </select>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="openModal('modal-am-dso')" class="px-3 py-1.5 bg-amber-500 text-slate-950 hover:bg-amber-600 text-xs font-bold rounded-xl transition shadow">
                     + Input Validasi DSO
-                button
-                button onclick=openModal('modal-am-piq') class=px-3 py-1.5 bg-red-600 text-white hoverbg-red-700 text-xs font-bold rounded-xl transition shadow
+                </button>
+                <button onclick="openModal('modal-am-piq')" class="px-3 py-1.5 bg-red-600 text-white hover:bg-red-700 text-xs font-bold rounded-xl transition shadow">
                     + Input Score PIQ (7 Pilar)
-                button
-            div
-        div
+                </button>
+            </div>
+        </div>
 
-        !-- LEADER LOCKED NOTICE --
-        div id=leader-locked-notice class=bg-amber-50 border border-amber-200 rounded-2xl p-3 px-4 text-xs text-amber-900 flex flex-wrap items-center justify-between gap-2 shadow-sm
-            div class=flex items-center gap-2
-                i class=fa-solid fa-lock text-amber-600 text-smi
-                spanstrongAkses Leader Outlet Activestrong Pengisian MTD, PIQ, Kalender, Profile Outlet & NIK dikunci oleh Area Manager.span
-            div
-            span class=text-[10px] font-bold uppercase bg-amber-200 text-amber-900 px-2 py-0.5 rounded id=leader-outlet-badgeCIWALK OUTLETspan
-        div
+        <!-- LEADER LOCKED NOTICE -->
+        <div id="leader-locked-notice" class="bg-amber-50 border border-amber-200 rounded-2xl p-3 px-4 text-xs text-amber-900 flex flex-wrap items-center justify-between gap-2 shadow-sm">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-lock text-amber-600 text-sm"></i>
+                <span><strong>Akses Leader Outlet Active:</strong> Pengisian MTD, PIQ, Kalender, Profile Outlet & NIK dikunci oleh Area Manager.</span>
+            </div>
+            <span class="text-[10px] font-bold uppercase bg-amber-200 text-amber-900 px-2 py-0.5 rounded" id="leader-outlet-badge">CIWALK OUTLET</span>
+        </div>
 
-        !-- ========================================== --
-        !-- TAB 1 MASTER DASHBOARD                    --
-        !-- ========================================== --
-        div id=tab-dashboard class=space-y-6
+        <!-- TAB 1 MASTER DASHBOARD -->
+        <div id="tab-dashboard" class="space-y-6">
             
-            !-- DYNAMIC GREETING & HERO BANNER --
-            div class=grid grid-cols-1 lggrid-cols-3 gap-6
-                div class=lgcol-span-2 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 text-white rounded-3xl p-6 shadow-lg relative overflow-hidden flex flex-col justify-between
-                    div
-                        div class=flex items-center gap-2 mb-2
-                            span class=bg-amber-50020 text-amber-300 border border-amber-50030 px-3 py-0.5 rounded-full text-xs font-semiboldArea Bandung 2span
-                            span class=text-xs text-slate-400 Live Operationsspan
-                        div
-                        !-- DYNAMIC TIME-BASED GREETING PER OUTLET --
-                        h1 class=text-2xl smtext-3xl font-extrabold tracking-tight text-white id=dynamic-greeting
+            <!-- DYNAMIC GREETING & HERO BANNER -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-gradient-to-br from-slate-900 via-slate-800 to-red-950 text-white rounded-3xl p-6 shadow-lg relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-0.5 rounded-full text-xs font-semibold">Area Bandung 2</span>
+                            <span class="text-xs text-slate-400">Live Operations</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white" id="dynamic-greeting">
                             Selamat Malam, Ciwalk
-                        h1
-                        p class=text-xs text-slate-300 mt-2 max-w-xl leading-relaxed
+                        </h1>
+                        <p class="text-xs text-slate-300 mt-2 max-w-xl leading-relaxed">
                             Pantau pencapaian sales harian, validasi DSO harian, status perbaikan equipment, dan jadwal tim incharge secara real-time.
-                        p
-                    div
+                        </p>
+                    </div>
 
-                    !-- Action Buttons --
-                    div class=mt-6 flex flex-wrap items-center gap-3 pt-4 border-t border-slate-70060
-                        button onclick=openModal('modal-input-sales') class=px-4 py-2 bg-amber-500 hoverbg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center gap-2
-                            i class=fa-solid fa-plus-circlei Input Sales Hari Ini
-                        button
-                        button onclick=openModal('modal-input-maintenance') class=px-4 py-2 bg-white10 hoverbg-white20 text-white font-medium text-xs rounded-xl backdrop-blur-sm transition border border-white20 flex items-center gap-2
-                            i class=fa-solid fa-screwdriver-wrench text-amber-400i Buat Pengajuan Perbaikan
-                        button
-                        button onclick=openModal('modal-upload-schedule') class=px-4 py-2 bg-white10 hoverbg-white20 text-white font-medium text-xs rounded-xl backdrop-blur-sm transition border border-white20 flex items-center gap-2
-                            i class=fa-solid fa-upload text-amber-400i Upload Schedule Periode Berikutnya
-                        button
-                    div
-                div
+                    <!-- Action Buttons -->
+                    <div class="mt-6 flex flex-wrap items-center gap-3 pt-4 border-t border-slate-700/60">
+                        <button onclick="openModal('modal-input-sales')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center gap-2">
+                            <i class="fa-solid fa-plus-circle"></i> Input Sales Hari Ini
+                        </button>
+                        <button onclick="openModal('modal-input-maintenance')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-xl backdrop-blur-sm transition border border-white/20 flex items-center gap-2">
+                            <i class="fa-solid fa-screwdriver-wrench text-amber-400"></i> Buat Pengajuan Perbaikan
+                        </button>
+                        <button onclick="openModal('modal-upload-schedule')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-xl backdrop-blur-sm transition border border-white/20 flex items-center gap-2">
+                            <i class="fa-solid fa-upload text-amber-400"></i> Upload Schedule Periode Berikutnya
+                        </button>
+                    </div>
+                </div>
 
-                !-- TIM INCHARGE HARI INI --
-                div class=bg-white rounded-3xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between
-                    div
-                        div class=flex justify-between items-center pb-3 border-b border-slate-100
-                            div class=flex items-center gap-2
-                                div class=w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs
-                                    i class=fa-solid fa-users-geari
-                                div
-                                div
-                                    h3 class=font-bold text-sm text-slate-800Tim Incharge Hari Inih3
-                                    p class=text-[11px] text-slate-500 id=incharge-dateKamis, 05 Nov 2026p
-                                div
-                            div
-                            span class=bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-fullCutoff Validspan
-                        div
+                <!-- TIM INCHARGE HARI INI -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-sm text-slate-800">Tim Incharge Hari Ini</h3>
+                                    <p class="text-[11px] text-slate-500" id="incharge-date">Kamis, 05 Nov 2026</p>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Cutoff Valid</span>
+                        </div>
 
-                        div class=mt-4 space-y-2.5 id=incharge-list
-                            !-- Injected by JavaScript --
-                        div
-                    div
-                    div class=mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-500
-                        spanOutlet strong class=text-slate-800 id=incharge-outlet-nameCiwalkstrongspan
-                        span class=text-amber-600 font-semibold cursor-pointer onclick=switchTab('schedule')Full Schedule →span
-                    div
-                div
-            div
+                        <div class="mt-4 space-y-2.5" id="incharge-list">
+                            <!-- Injected by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-500">
+                        <span>Outlet: <strong class="text-slate-800" id="incharge-outlet-name">Ciwalk</strong></span>
+                        <span class="text-amber-600 font-semibold cursor-pointer" onclick="switchTab('schedule')">Full Schedule →</span>
+                    </div>
+                </div>
+            </div>
 
-            !-- SALES SUMMARY CARDS --
-            div class=grid grid-cols-1 smgrid-cols-2 lggrid-cols-4 gap-4
-                !-- Today Sales --
-                div class=bg-white rounded-2xl p-5 border border-slate-200 shadow-sm
-                    div class=flex justify-between items-start
-                        div
-                            p class=text-[11px] font-bold uppercase tracking-wider text-slate-500Sales Hari Inip
-                            h2 class=text-xl font-extrabold text-slate-900 mt-1 id=sales-todayRp 0h2
-                        div
-                        span class=w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm
-                            i class=fa-solid fa-cash-registeri
-                        span
-                    div
-                    div class=mt-4 flex items-center justify-between text-[11px]
-                        span class=text-slate-400 id=sales-today-statusBelum diinput Leaderspan
-                        span class=text-slate-500 font-mediumTarget Rp 7.500kspan
-                    div
-                div
+            <!-- SALES SUMMARY CARDS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Today Sales -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Sales Hari Ini</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 mt-1" id="sales-today">Rp 0</h2>
+                        </div>
+                        <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </span>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400" id="sales-today-status">Belum diinput Leader</span>
+                        <span class="text-slate-500 font-medium">Target: Rp 7.500k</span>
+                    </div>
+                </div>
 
-                !-- MTD Sales --
-                div class=bg-white rounded-2xl p-5 border border-slate-200 shadow-sm
-                    div class=flex justify-between items-start
-                        div
-                            p class=text-[11px] font-bold uppercase tracking-wider text-slate-500Sales MTDp
-                            h2 class=text-xl font-extrabold text-slate-900 mt-1 id=sales-mtdRp 32.800.000h2
-                        div
-                        span class=w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm
-                            i class=fa-solid fa-chart-linei
-                        span
-                    div
-                    div class=mt-3 space-y-1
-                        div class=flex justify-between text-[11px] font-semibold
-                            span class=text-slate-600Achievementspan
-                            span class=text-amber-600 id=sales-ach-pct93.7%span
-                        div
-                        div class=w-full bg-slate-100 h-2 rounded-full overflow-hidden
-                            div class=bg-amber-500 h-full rounded-full style=width 93.7%div
-                        div
-                    div
-                div
+                <!-- MTD Sales -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Sales MTD</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 mt-1" id="sales-mtd">Rp 32.800.000</h2>
+                        </div>
+                        <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </span>
+                    </div>
+                    <div class="mt-3 space-y-1">
+                        <div class="flex justify-between text-[11px] font-semibold">
+                            <span class="text-slate-600">Achievement</span>
+                            <span class="text-amber-600" id="sales-ach-pct">93.7%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-amber-500 h-full rounded-full" style="width: 93.7%"></div>
+                        </div>
+                    </div>
+                </div>
 
-                !-- Selisih Today & To-Date --
-                div class=bg-white rounded-2xl p-5 border border-slate-200 shadow-sm
-                    div class=flex justify-between items-start
-                        div
-                            p class=text-[11px] font-bold uppercase tracking-wider text-slate-500Selisih To-Date Salesp
-                            h2 class=text-xl font-extrabold text-red-600 mt-1 id=sales-gap-Rp 2.200.000h2
-                        div
-                        span class=w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-sm
-                            i class=fa-solid fa-scale-unbalancedi
-                        span
-                    div
-                    p class=text-[11px] text-slate-500 mt-3Target MTD Rp 35.000.000p
-                div
+                <!-- Selisih Today & To-Date -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Selisih To-Date Sales</p>
+                            <h2 class="text-xl font-extrabold text-red-600 mt-1" id="sales-gap">-Rp 2.200.000</h2>
+                        </div>
+                        <span class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-scale-unbalanced"></i>
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mt-3">Target MTD: Rp 35.000.000</p>
+                </div>
 
-                !-- PIQ Performance Score --
-                div class=bg-white rounded-2xl p-5 border border-slate-200 shadow-sm
-                    div class=flex justify-between items-start
-                        div
-                            p class=text-[11px] font-bold uppercase tracking-wider text-slate-500PIQ Audit Scorep
-                            div class=flex items-baseline gap-2 mt-1
-                                span class=text-xl font-extrabold text-slate-900 id=piq-score-display0 Poinspan
-                                span class=text-[10px] font-bold px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md id=piq-status-badgeNov Belum Inputspan
-                            div
-                        div
-                        span class=w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-sm
-                            i class=fa-solid fa-awardi
-                        span
-                    div
-                    p class=text-[11px] text-slate-500 mt-3Oktober Lalu strong13 Poin (A)strongp
-                div
-            div
+                <!-- PIQ Performance Score -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500">PIQ Audit Score</p>
+                            <div class="flex items-baseline gap-2 mt-1">
+                                <span class="text-xl font-extrabold text-slate-900" id="piq-score-display">0 Poin</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md" id="piq-status-badge">Nov Belum Input</span>
+                            </div>
+                        </div>
+                        <span class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-award"></i>
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mt-3">Oktober Lalu: <strong>13 Poin (A)</strong></p>
+                </div>
+            </div>
 
-            !-- INVENTORY DSO RIWAYAT & HEALTH CHECK (3 INTERFACES) --
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                div class=flex justify-between items-center pb-4 border-b border-slate-100
-                    div
-                        h2 class=text-lg font-bold text-slate-900Inventory & Daily Stock Opname (DSO) Statush2
-                        p class=text-xs text-slate-500Interface harian validasi AM dan indikator selisih bahan bakup
-                    div
-                    span class=text-xs text-slate-400Outlet strong class=text-slate-800 id=dso-outlet-nameCiwalkstrongspan
-                div
+            <!-- INVENTORY DSO RIWAYAT & HEALTH CHECK -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Inventory & Daily Stock Opname (DSO) Status</h2>
+                        <p class="text-xs text-slate-500">Interface harian validasi AM dan indikator selisih bahan baku</p>
+                    </div>
+                    <span class="text-xs text-slate-400">Outlet: <strong class="text-slate-800" id="dso-outlet-name">Ciwalk</strong></span>
+                </div>
 
-                div class=grid grid-cols-1 mdgrid-cols-3 gap-4
-                    !-- INTERFACE 1 DSO HARIAN --
-                    div class=bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between
-                        div
-                            span class=text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5 mb-3
-                                i class=fa-solid fa-clipboard-check text-amber-600i Interface 1 DSO Harian
-                            span
-                            div class=space-y-2 text-xs id=dso-history-list
-                                div class=p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl flex justify-between font-semibold text-emerald-900
-                                    spanDSO Tgl 1 Novspan span class=font-boldAMANspan
-                                div
-                                div class=p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl flex justify-between font-semibold text-emerald-900
-                                    spanDSO Tgl 2 Novspan span class=font-boldAMANspan
-                                div
-                                div class=p-2.5 bg-red-50 border border-red-200 rounded-xl text-red-900 space-y-1
-                                    div class=flex justify-between font-bold
-                                        spanDSO Tgl 3 Novspan span class=bg-red-200 text-red-900 px-1.5 py-0.5 rounded text-[10px]REVISIspan
-                                    div
-                                    p class=text-[11px] text-red-700Torbig -1, Moza -2. Hitung ulang freezer A.p
-                                div
-                            div
-                        div
-                    div
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- INTERFACE 1 DSO HARIAN -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5 mb-3">
+                                <i class="fa-solid fa-clipboard-check text-amber-600"></i> Interface 1: DSO Harian
+                            </span>
+                            <div class="space-y-2 text-xs" id="dso-history-list">
+                                <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl flex justify-between font-semibold text-emerald-900">
+                                    <span>DSO Tgl 1 Nov</span> <span class="font-bold">AMAN</span>
+                                </div>
+                                <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl flex justify-between font-semibold text-emerald-900">
+                                    <span>DSO Tgl 2 Nov</span> <span class="font-bold">AMAN</span>
+                                </div>
+                                <div class="p-2.5 bg-red-50 border border-red-200 rounded-xl text-red-900 space-y-1">
+                                    <div class="flex justify-between font-bold">
+                                        <span>DSO Tgl 3 Nov</span> <span class="bg-red-200 text-red-900 px-1.5 py-0.5 rounded text-[10px]">REVISI</span>
+                                    </div>
+                                    <p class="text-[11px] text-red-700">Torbig -1, Moza -2. Hitung ulang freezer A.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    !-- INTERFACE 2 SELISIH KG TINGGI --
-                    div class=bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between
-                        div
-                            div class=flex justify-between items-center mb-2
-                                span class=text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5
-                                    i class=fa-solid fa-weight-scale text-red-600i Interface 2 Selisih KG
-                                span
-                                span class=text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 roundedBahan Beratspan
-                            div
-                            div class=space-y-2 text-xs mt-3 id=inventory-kg-deviations
-                                div class=p-3 bg-white border border-red-200 rounded-xl flex justify-between items-center
-                                    div
-                                        p class=font-bold text-slate-900Saus Cabe Extra Hotp
-                                        p class=text-[10px] text-slate-400Master Item ID 104p
-                                    div
-                                    span class=font-extrabold text-red-600 text-sm12.5% Selisihspan
-                                div
-                                div class=p-3 bg-white border border-amber-200 rounded-xl flex justify-between items-center
-                                    div
-                                        p class=font-bold text-slate-900Mayonaise Premiump
-                                        p class=text-[10px] text-slate-400Master Item ID 108p
-                                    div
-                                    span class=font-extrabold text-amber-600 text-sm4.2% Selisihspan
-                                div
-                            div
-                        div
-                        p class=text-[10px] text-slate-400 mt-3 italicHanya memunculkan item selisih. Item aman disembunyikan.p
-                    div
+                    <!-- INTERFACE 2 SELISIH KG TINGGI -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5">
+                                    <i class="fa-solid fa-weight-scale text-red-600"></i> Interface 2: Selisih KG
+                                </span>
+                                <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">Bahan Berat</span>
+                            </div>
+                            <div class="space-y-2 text-xs mt-3" id="inventory-kg-deviations">
+                                <div class="p-3 bg-white border border-red-200 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-900">Saus Cabe Extra Hot</p>
+                                        <p class="text-[10px] text-slate-400">Master Item ID 104</p>
+                                    </div>
+                                    <span class="font-extrabold text-red-600 text-sm">12.5% Selisih</span>
+                                </div>
+                                <div class="p-3 bg-white border border-amber-200 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-900">Mayonaise Premium</p>
+                                        <p class="text-[10px] text-slate-400">Master Item ID 108</p>
+                                    </div>
+                                    <span class="font-extrabold text-amber-600 text-sm">4.2% Selisih</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-3 italic">Hanya memunculkan item selisih. Item aman disembunyikan.</p>
+                    </div>
 
-                    !-- INTERFACE 3 SELISIH PCS CORE ITEMS --
-                    div class=bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between
-                        div
-                            div class=flex justify-between items-center mb-2
-                                span class=text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5
-                                    i class=fa-solid fa-cubes text-amber-600i Interface 3 Selisih PCS
-                                span
-                                span class=text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 roundedCore Itemsspan
-                            div
-                            div class=space-y-2 text-xs mt-3 id=inventory-pcs-deviations
-                                div class=p-3 bg-white border border-red-200 rounded-xl flex justify-between items-center
-                                    div
-                                        p class=font-bold text-slate-900Tortilla Big (Kebab Big)p
-                                        p class=text-[10px] text-slate-400Core Itemp
-                                    div
-                                    span class=font-extrabold text-red-600 text-sm-1span
-                                div
-                                div class=p-3 bg-white border border-amber-200 rounded-xl flex justify-between items-center
-                                    div
-                                        p class=font-bold text-slate-900Keju Mozzarella Blockp
-                                        p class=text-[10px] text-slate-400Core Itemp
-                                    div
-                                    span class=font-extrabold text-blue-600 text-sm+2span
-                                div
-                            div
-                        div
-                        p class=text-[10px] text-slate-400 mt-3 italicHanya memunculkan item selisih. Item aman disembunyikan.p
-                    div
-                div
-            div
+                    <!-- INTERFACE 3 SELISIH PCS CORE ITEMS -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-extrabold uppercase text-slate-800 tracking-wider flex items-center gap-1.5">
+                                    <i class="fa-solid fa-cubes text-amber-600"></i> Interface 3: Selisih PCS
+                                </span>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Core Items</span>
+                            </div>
+                            <div class="space-y-2 text-xs mt-3" id="inventory-pcs-deviations">
+                                <div class="p-3 bg-white border border-red-200 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-900">Tortilla Big (Kebab Big)</p>
+                                        <p class="text-[10px] text-slate-400">Core Item</p>
+                                    </div>
+                                    <span class="font-extrabold text-red-600 text-sm">-1</span>
+                                </div>
+                                <div class="p-3 bg-white border border-amber-200 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-slate-900">Keju Mozzarella Block</p>
+                                        <p class="text-[10px] text-slate-400">Core Item</p>
+                                    </div>
+                                    <span class="font-extrabold text-blue-600 text-sm">+2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-3 italic">Hanya memunculkan item selisih. Item aman disembunyikan.</p>
+                    </div>
+                </div>
+            </div>
 
-            !-- EXCEL BOX GRID CALENDAR --
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                div class=flex justify-between items-center pb-3 border-b border-slate-100
-                    div
-                        h3 class=font-bold text-slate-900 text-smKalender Aktivitas & Deadline Operasionalh3
-                        p class=text-[11px] text-slate-500Tampilan grid bulanan aktivitas outlet Area Bandung 2p
-                    div
-                    span class=text-xs bg-amber-100 text-amber-900 font-bold px-2.5 py-1 rounded-lgNovember 2026span
-                div
+            <!-- EXCEL BOX GRID CALENDAR -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm">Kalender Aktivitas & Deadline Operasional</h3>
+                        <p class="text-[11px] text-slate-500">Tampilan grid bulanan aktivitas outlet Area Bandung 2</p>
+                    </div>
+                    <span class="text-xs bg-amber-100 text-amber-900 font-bold px-2.5 py-1 rounded-lg">November 2026</span>
+                </div>
 
-                div class=overflow-x-auto
-                    div class=min-w-[600px] grid grid-cols-7 gap-1 bg-slate-200 p-1 rounded-2xl border border-slate-300 text-xs
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlSENdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlSELdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlRABdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlKAMdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlJUMdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlSABdiv
-                        div class=bg-slate-900 text-white font-bold p-2 text-center rounded-t-xlMINdiv
+                <div class="overflow-x-auto">
+                    <div class="min-w-[600px] grid grid-cols-7 gap-1 bg-slate-200 p-1 rounded-2xl border border-slate-300 text-xs">
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">SEN</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">SEL</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">RAB</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">KAM</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">JUM</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">SAB</div>
+                        <div class="bg-slate-900 text-white font-bold p-2 text-center rounded-t-xl">MIN</div>
 
-                        !-- Days --
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-40027spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-40028spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-40029spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-40030spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-40031spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8001spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8002spandiv
+                        <!-- Days -->
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-400">27</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-400">28</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-400">29</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-400">30</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-400">31</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">1</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">2</span></div>
 
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8003spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8004spandiv
-                        div class=bg-amber-100 p-1.5 calendar-grid-cell rounded-lg border border-amber-300
-                            span class=font-bold text-amber-9005 (Hari Ini)span
-                            p class=text-[9px] bg-amber-500 text-slate-950 font-bold p-0.5 rounded mt-1DSO Validp
-                        div
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8006spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8007spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8008spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-8009spandiv
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">3</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">4</span></div>
+                        <div class="bg-amber-100 p-1.5 calendar-grid-cell rounded-lg border border-amber-300">
+                            <span class="font-bold text-amber-900">5 (Hari Ini)</span>
+                            <p class="text-[9px] bg-amber-500 text-slate-950 font-bold p-0.5 rounded mt-1">DSO Valid</p>
+                        </div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">6</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">7</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">8</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">9</span></div>
 
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80010spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80011spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80012spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80013spandiv
-                        div class=bg-red-50 p-1.5 calendar-grid-cell rounded-lg border border-red-300
-                            span class=font-bold text-red-90014span
-                            p class=text-[8px] bg-red-600 text-white font-bold p-0.5 rounded mt-0.5 leading-tightBatas Post-Test Self Learning PIQp
-                        div
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80015spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80016spandiv
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">10</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">11</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">12</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">13</span></div>
+                        <div class="bg-red-50 p-1.5 calendar-grid-cell rounded-lg border border-red-300">
+                            <span class="font-bold text-red-900">14</span>
+                            <p class="text-[8px] bg-red-600 text-white font-bold p-0.5 rounded mt-0.5 leading-tight">Batas Post-Test PIQ</p>
+                        </div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">15</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">16</span></div>
+                        <div class="bg-white p-1.5 calendar-grid-cell rounded-lg"><span class="font-bold text-slate-800">17</span></div>
+                    </div>
+                </div>
+            </div>
 
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80017spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80018spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80019spandiv
-                        div class=bg-amber-50 p-1.5 calendar-grid-cell rounded-lg border border-amber-300
-                            span class=font-bold text-amber-90020span
-                            p class=text-[8px] bg-amber-600 text-white font-bold p-0.5 rounded mt-0.5 leading-tightDeadline Schedule 26 Nov - 25 Desp
-                        div
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80021spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80022spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80023spandiv
-
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80024spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80025spandiv
-                        div class=bg-blue-50 p-1.5 calendar-grid-cell rounded-lg border border-blue-300
-                            span class=font-bold text-blue-90026span
-                            p class=text-[8px] bg-blue-600 text-white font-bold p-0.5 rounded mt-0.5 leading-tightStock Opname All Itemp
-                        div
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80027spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80028spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80029spandiv
-                        div class=bg-white p-1.5 calendar-grid-cell rounded-lgspan class=font-bold text-slate-80030spandiv
-                    div
-                div
-            div
-
-        div
-
-        !-- ========================================== --
-        !-- TAB 2 INVENTORY & DSO FULL                --
-        !-- ========================================== --
-        div id=tab-inventory class=hidden space-y-6
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                h2 class=text-xl font-bold text-slate-900Inventory & Daily Stock Opname (DSO)h2
-                p class=text-xs text-slate-500Sistem kontrol inventory 3-Interface terintegrasip
-            div
-        div
-
-        !-- ========================================== --
-        !-- TAB 3 SALES REPORT (VERTICAL TABLE)       --
-        !-- ========================================== --
-        div id=tab-sales class=hidden space-y-6
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                div class=flex justify-between items-center pb-4 border-b border-slate-100
-                    div
-                        h2 class=text-xl font-bold text-slate-900Sales Report Daily (Bulan Berjalan)h2
-                        p class=text-xs text-slate-500 mt-1Tabel menyusun vertikal ke bawah dari tanggal 1 sd 3031p
-                    div
-                    button onclick=openModal('modal-input-sales') class=px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow
-                        + Input Sales Hari Ini
-                    button
-                div
-
-                div class=overflow-x-auto
-                    table class=w-full text-left border-collapse text-xs
-                        thead
-                            tr class=bg-slate-900 text-white font-bold
-                                th class=p-3Tanggalth
-                                th class=p-3Target Todayth
-                                th class=p-3Sales Real Todayth
-                                th class=p-3To-Date Targetth
-                                th class=p-3To-Date Salesth
-                                th class=p-3Selisih Todayth
-                                th class=p-3Achievement %th
-                            tr
-                        thead
-                        tbody class=divide-y divide-slate-100 text-slate-700
-                            tr class=hoverbg-slate-50
-                                td class=p-3 font-bold01 Nov 2026td
-                                td class=p-3Rp 7.500.000td
-                                td class=p-3 font-bold text-slate-900Rp 8.100.000td
-                                td class=p-3Rp 7.500.000td
-                                td class=p-3 font-boldRp 8.100.000td
-                                td class=p-3 font-bold text-emerald-600+Rp 600.000td
-                                td class=p-3 font-bold text-emerald-600108.0%td
-                            tr
-                            tr class=bg-amber-5060 font-bold border-2 border-amber-300
-                                td class=p-3 font-bold text-amber-90005 Nov 2026 (Today)td
-                                td class=p-3 text-slate-600Rp 7.500.000td
-                                td class=p-3 font-bold text-red-600 id=table-sales-todayRp 0 (Belum Input)td
-                                td class=p-3 text-slate-600Rp 37.500.000td
-                                td class=p-3 font-bold text-slate-900Rp 32.800.000td
-                                td class=p-3 text-red-600-Rp 4.700.000td
-                                td class=p-3 text-amber-60087.4%td
-                            tr
-                        tbody
-                    table
-                div
-            div
-        div
-
-        !-- ========================================== --
-        !-- TAB 4 PIQ PERFORMANCE                     --
-        !-- ========================================== --
-        div id=tab-piq class=hidden space-y-6
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                h2 class=text-xl font-bold text-slate-900PIQ Performance (7 Pilar Murni)h2
-                div class=grid grid-cols-1 smgrid-cols-2 lggrid-cols-4 gap-4
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5001. PRODUCT QUALITYp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5002. SERVICE QUALITYp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5003. STORE AMBIENCEp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5004. SELF LEARNINGp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5005. INVENTORYp
-                        p class=text-lg font-black text-slate-900 mt-1Score 1 span class=text-xs text-amber-600(Predikat B)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5006. PETTY CASHp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                    div class=p-4 bg-slate-50 rounded-2xl border border-slate-200
-                        p class=text-[11px] font-bold text-slate-5007. ADMINISTRATIONp
-                        p class=text-lg font-black text-slate-900 mt-1Score 2 span class=text-xs text-emerald-600(Predikat A)spanp
-                    div
-                div
-            div
-        div
-
-        !-- ========================================== --
-        !-- TAB 5 PENGAJUAN PERBAIKAN                 --
-        !-- ========================================== --
-        div id=tab-maintenance class=hidden space-y-6
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                div class=flex justify-between items-center pb-4 border-b border-slate-100
-                    div
-                        h2 class=text-xl font-bold text-slate-900Buat Pengajuan Perbaikanh2
-                        p class=text-xs text-slate-500 mt-1Daftar pengajuan menyusun ke bawah dengan foto langsung tertampilp
-                    div
-                    button onclick=openModal('modal-input-maintenance') class=px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow
-                        + Buat Pengajuan Perbaikan
-                    button
-                div
-
-                div class=space-y-4 id=maintenance-list
-                    div class=p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3
-                        div class=flex flex-wrap justify-between items-start gap-2
-                            div
-                                span class=text-[10px] font-bold uppercase bg-red-100 text-red-800 px-2 py-0.5 roundedHigh Priorityspan
-                                h4 class=font-bold text-base text-slate-900 mt-1Freezer Undercounter - Bocor Freonh4
-                                p class=text-xs text-slate-500Equipment Freezer Undercounter  PIC Leaderp
-                            div
-                            span class=text-xs font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-lg border border-amber-300Menunggu AM Reviewspan
-                        div
-                        div class=w-full max-w-xs h-36 bg-slate-200 rounded-xl flex items-center justify-center text-slate-400
-                            i class=fa-solid fa-image text-3xli
-                        div
-                    div
-                div
-            div
-        div
-
-        !-- ========================================== --
-        !-- TAB 8 DATA TEAM                           --
-        !-- ========================================== --
-        div id=tab-team class=hidden space-y-6
-            div class=bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4
-                h2 class=text-xl font-bold text-slate-900Data Tim Area Bandung 2h2
-                div class=overflow-x-auto
-                    table class=w-full text-left border-collapse text-xs
-                        thead
-                            tr class=bg-slate-900 text-white font-bold
-                                th class=p-3Outletth
-                                th class=p-3NIKth
-                                th class=p-3Nama Karyawanth
-                                th class=p-3Jabatanth
-                                th class=p-3Join Dateth
-                                th class=p-3Atribut Seragamth
-                                th class=p-3Aksi Leaderth
-                            tr
-                        thead
-                        tbody class=divide-y divide-slate-100
-                            tr class=hoverbg-slate-50
-                                td class=p-3 font-bold text-amber-600Ciwalktd
-                                td class=p-3 font-mono font-bold text-slate-80019341td
-                                td class=p-3 font-bold text-slate-900Eggi Ridwansyahtd
-                                td class=p-3Store Leadertd
-                                td class=p-3 text-slate-50012 Jan 2023td
-                                td class=p-3 font-bold text-emerald-700 id=seragam-193413 Kaos, 2 Apron, 1 Topitd
-                                td class=p-3
-                                    button onclick=openModalUpdateSeragam('19341', 'Eggi') class=px-2.5 py-1 bg-amber-500 text-slate-950 font-bold rounded-lg text-[10px]
-                                        Update Atribut
-                                    button
-                                td
-                            tr
-                        tbody
-                    table
-                div
-            div
-        div
-
-    main
-
-    !-- MODAL SALES --
-    div id=modal-input-sales class=fixed inset-0 bg-slate-90060 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4
-        div class=bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl
-            div class=flex justify-between items-center border-b border-slate-100 pb-3
-                h3 class=font-bold text-slate-900 text-baseInput Sales Report Dailyh3
-                button onclick=closeModal('modal-input-sales') class=text-slate-400i class=fa-solid fa-xmark text-lgibutton
-            div
-            form onsubmit=submitSales(event) class=space-y-3 text-xs
-                div
-                    label class=font-semibold text-slate-700Nominal Sales Hari Ini (Rp)label
-                    input type=number id=input-sales-val placeholder=Contoh 8450000 required class=w-full mt-1 p-2.5 border border-slate-300 rounded-xl font-bold text-sm
-                div
-                div class=pt-2 flex justify-end gap-2
-                    button type=button onclick=closeModal('modal-input-sales') class=px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded-xlBatalbutton
-                    button type=submit class=px-5 py-2 bg-amber-500 text-slate-950 font-bold rounded-xl shadowSimpan Salesbutton
-                div
-            form
-        div
-    div
-
-    !-- SCRIPT JAVASCRIPT LOGIC --
-    script
-         PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
-        const API_URL = PASANG_WEB_APP_URL_DARI_LANGKAH_2_DISINI;
-
-        const state = {
-            role 'leader',
-            activeOutlet 'Ciwalk',
-            salesTodayInputted false
-        };
-
-        window.onload = function() {
-            renderDashboard();
-            updateRoleUI();
-        };
-
-        function getGreeting() {
-            const hour = new Date().getHours();
-            if (hour = 4 && hour  11) return Selamat Pagi;
-            if (hour = 11 && hour  15) return Selamat Siang;
-            if (hour = 15 && hour  18) return Selamat Sore;
-            return Selamat Malam;
-        }
-
-        function switchRole(newRole) {
-            state.role = newRole;
-            const btnLeader = document.getElementById('role-btn-leader');
-            const btnAm = document.getElementById('role-btn-am');
-
-            if (newRole === 'leader') {
-                btnLeader.className = px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500 text-slate-950 shadow-sm flex items-center gap-1.5;
-                btnAm.className = px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hovertext-slate-900 flex items-center gap-1.5;
-                state.activeOutlet = 'Ciwalk';
-            } else {
-                btnAm.className = px-3 py-1.5 rounded-xl text-xs font-semibold bg-red-600 text-white shadow-sm flex items-center gap-1.5;
-                btnLeader.className = px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-600 hovertext-slate-900 flex items-center gap-1.5;
-            }
-
-            updateRoleUI();
-            renderDashboard();
-        }
-
-        function updateRoleUI() {
-            const amBar = document.getElementById('am-outlet-selector-bar');
-            const leaderNotice = document.getElementById('leader-locked-notice');
-
-            if (state.role === 'am') {
-                amBar.classList.remove('hidden');
-                leaderNotice.classList.add('hidden');
-            } else {
-                amBar.classList.add('hidden');
-                leaderNotice.classList.remove('hidden');
-            }
-        }
-
-        function switchTab(tabName) {
-            const tabs = ['dashboard', 'inventory', 'sales', 'piq', 'maintenance', 'visit', 'schedule', 'team', 'ba', 'profile'];
-            tabs.forEach(t = {
-                const el = document.getElementById(`tab-${t}`);
-                if (el) el.classList.add('hidden');
-            });
-            const activeEl = document.getElementById(`tab-${tabName}`);
-            if (activeEl) activeEl.classList.remove('hidden');
-        }
-
-        function renderDashboard() {
-             Dynamic Greeting Update
-            document.getElementById('dynamic-greeting').innerText = `${getGreeting()}, ${state.activeOutlet}`;
-            document.getElementById('dso-outlet-name').innerText = state.activeOutlet;
-            document.getElementById('incharge-outlet-name').innerText = state.activeOutlet;
-
-             Sales Status
-            const salesTodayEl = document.getElementById('sales-today');
-            const salesStatusEl = document.getElementById('sales-today-status');
-            const tableSalesToday = document.getElementById('table-sales-today');
-
-            if (state.salesTodayInputted) {
-                salesTodayEl.innerText = Rp 8.450.000;
-                salesTodayEl.className = text-xl font-extrabold text-emerald-600 mt-1;
-                salesStatusEl.innerText = ✓ Sudah diinput;
-                salesStatusEl.className = text-emerald-600 font-bold;
-                if(tableSalesToday) tableSalesToday.innerText = Rp 8.450.000;
-            } else {
-                salesTodayEl.innerText = Rp 0;
-                salesTodayEl.className = text-xl font-extrabold text-slate-900 mt-1;
-                salesStatusEl.innerText = Belum diinput Leader;
-                salesStatusEl.className = text-slate-400;
-            }
-        }
-
-        function submitSales(e) {
-            e.preventDefault();
-            const val = document.getElementById('input-sales-val').value;
-            
-             Send to Google Sheets if API URL is set
-            if(API_URL && API_URL !== PASANG_WEB_APP_URL_DARI_LANGKAH_2_DISINI) {
-                fetch(API_URL, {
-                    method 'POST',
-                    body JSON.stringify({ action 'inputSales', tanggal '2026-11-05', outlet state.activeOutlet, nominal_sales val })
-                });
-            }
-
-            state.salesTodayInputted = true;
-            alert('Sales Hari Ini berhasil disimpan!');
-            closeModal('modal-input-sales');
-            renderDashboard();
-        }
-
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-        function onOutletChange(val) { state.activeOutlet = val; renderDashboard(); }
-    script
-body
-html
+        </div>
+    </main>
+</body>
+</html>
